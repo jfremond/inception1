@@ -2,9 +2,10 @@
 
 ## BEFORE STARTING
 
-- [x] update and upgrade
-- [x] install git
-- [x] install make
+- [x]	update and upgrade
+- [x]	install vim
+- [x]	install git
+- [x]	install make
 
 ```
 sudo apt update && sudo apt upgrade
