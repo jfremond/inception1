@@ -2,24 +2,24 @@
 
 ## BEFORE STARTING
 
-- [ ] update and upgrade
-- [ ] install git
-- [ ] install make
+- [x] update and upgrade
+- [x] install git
+- [x] install make
 
 ```
 sudo apt update && sudo apt upgrade
+sudo apt install vim
 sudo apt install git
 sudo apt install make
 ```
 
 ## PREREQUISITES FOR THE PROJECT
-- [ ]	Create group docker
-- [ ]	Add jfremond to group sudo
-- [ ]	Add jfremond to group docker
+- [x]	Create group docker
+- [x]	Add jfremond to group sudo
+- [x]	Add jfremond to group docker
 ```
 sudo groupadd docker
 sudo usermod -aG sudo jfremond
 sudo usermod -aG docker jfremond
 ```
-- [ ]	Install docker engine
-[Install Docker Engine](https://docs.docker.com/engine/install/debian/)
+- [x]	[Install Docker Engine](https://docs.docker.com/engine/install/debian/)
