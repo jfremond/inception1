@@ -7,9 +7,9 @@
 - [ ] install make
 
 ```
-apt update && apt upgrade
-apt install git
-apt install make
+sudo apt update && sudo apt upgrade
+sudo apt install git
+sudo apt install make
 ```
 
 ## PREREQUISITES FOR THE PROJECT
