@@ -5,8 +5,8 @@
 - [ ] update and upgrade
 - [ ] install git
 - [ ] install make
+
 ```
-// As root
 apt update && apt upgrade
 apt install git
 apt install make
