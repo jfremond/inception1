@@ -1,6 +1,18 @@
 # TODO.md
 
-## PREREQUISITES
+## BEFORE STARTING
+
+- [ ] update and upgrade
+- [ ] install git
+- [ ] install make
+```
+# As root
+apt update && apt upgrade
+apt install git
+apt install make
+```
+
+## PREREQUISITES FOR THE PROJECT
 - [ ]	Create group docker
 - [ ]	Add jfremond to group sudo
 - [ ]	Add jfremond to group docker
