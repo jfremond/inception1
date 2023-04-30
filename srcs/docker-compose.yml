@@ -9,12 +9,12 @@ services:
       - "443:443"
     restart: on-failure
     networks:
-      - inception_network
-    image: "inception_nginx"
+      - inception
+    image: "nginx"
     working_dir: /var/www/html
     # volumes:
       # - wp-files:/var/www/html
 
 networks:
-  inception_network:
+  inception:
     driver: bridge
