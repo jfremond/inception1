@@ -1,24 +1,26 @@
-#VERSION DEBIAN BUSTER #
-FROM debian:buster
+# Download baseImage
+FROM alpine:3.17.3
 
-RUN apt update && apt upgrade -y
+# Update and upgrade alpine
+RUN apk upgrade -U
 
-RUN apt install nginx -y
+# Install nginx and openSSL
+RUN apk add --no-cache nginx openssl
 
-RUN apt install openssl -y
-
+# Create directories to respect nginx organization
 RUN mkdir -p /etc/nginx/ssl /etc/nginx/ssl/certs /etc/nginx/ssl/private
 
+# Generate ssl cert and ssl key
 RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jfremond.42.fr/UID=jfremond" \
 	-out /etc/nginx/ssl/certs/selfsigned.crt \
 	-keyout /etc/nginx/ssl/private/selfsigned.key
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+# Copy nginx config
+COPY conf/nginx.conf /etc/nginx/http.d/
 
-RUN chmod 755 /var/www/html
-RUN chown -R www-data:www-data /var/www/html
+# Copy html page
+COPY html/index.html /var/www/html/
 
+# Run nginx in foreground
 CMD [ "nginx", "-g", "daemon off;" ]
-
-# VERSION APLINE #
