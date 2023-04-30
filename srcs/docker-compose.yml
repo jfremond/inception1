@@ -7,8 +7,7 @@ services:
     build: ./requirements/nginx
     ports:
       - "443:443"
-      - "80:80"
-    restart: always
+    restart: on-failure
     networks:
       - inception_network
     image: "inception_nginx"

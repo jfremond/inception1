@@ -1,29 +1,23 @@
-# VERSION DEBIAN BUSTER #
+#VERSION DEBIAN BUSTER #
 FROM debian:buster
 
-RUN apt update -y && apt upgrade -y
+RUN apt update && apt upgrade -y
 
 RUN apt install nginx -y
 
-RUN apt install vim -y
-
-RUN mkdir -p /etc/nginx/ssl
-
 RUN apt install openssl -y
 
-RUN openssl req -x509 -nodes \
-	-out /etc/nginx/ssl/selfsigned.crt \
-	-keyout /etc/nginx/ssl/selfsigned.key \
-	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jfremond.42.fr/UID=jfremond"
+RUN mkdir -p /etc/nginx/ssl /etc/nginx/ssl/certs /etc/nginx/ssl/private
 
-RUN mkdir -p /var/run/nginx
+RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
+	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jfremond.42.fr/UID=jfremond" \
+	-out /etc/nginx/ssl/certs/selfsigned.crt \
+	-keyout /etc/nginx/ssl/private/selfsigned.key
 
-COPY conf/nginx.conf /etc/nginx.conf
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN chmod 755 /var/www/html
 RUN chown -R www-data:www-data /var/www/html
-
-# EXPOSE 443
 
 CMD [ "nginx", "-g", "daemon off;" ]
 
