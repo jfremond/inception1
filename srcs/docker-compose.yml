@@ -11,6 +11,16 @@ services:
     networks:
       - inception
 
+  mariadb:
+    image: "mariadb"
+    build: ./requirements/mariadb
+    ports:
+      - "3306"
+    env_file:
+      - .env
+    networks:
+      - inception
+
 networks:
   inception:
     driver: bridge

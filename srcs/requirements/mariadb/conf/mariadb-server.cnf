@@ -1,0 +1,19 @@
+#[mysql]
+default-character-set=utf8
+
+#[mysqld]
+# Indicate where our database will be stored
+datadir = /var/lib/mysql
+
+# Where MySQL can find the socket to communicate with
+socket = /run/mysqld/mysqld.sock
+
+# All network IPs can connect
+bind_address = *
+
+# Tell MySQL which port to communicate with
+port = 3306
+
+# Add user
+user = mysql
+

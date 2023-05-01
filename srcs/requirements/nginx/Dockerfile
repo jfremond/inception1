@@ -4,7 +4,7 @@ FROM alpine:3.17.3
 # Update and upgrade alpine
 RUN apk upgrade -U
 
-# Install nginx and openSSL
+# Install NGINX and OpenSSL
 RUN apk add --no-cache nginx openssl
 
 # Create directories to store certification and key
@@ -16,11 +16,11 @@ RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 	-out /etc/nginx/ssl/certs/selfsigned.crt \
 	-keyout /etc/nginx/ssl/private/selfsigned.key
 
-# Copy nginx config
+# Copy NGINX config
 COPY conf/nginx.conf /etc/nginx/http.d/
 
 # Copy html page
 COPY html/index.html /var/www/html/
 
-# Run nginx in foreground
+# Run NGINX in foreground
 CMD [ "nginx", "-g", "daemon off;" ]
