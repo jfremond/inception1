@@ -2,19 +2,16 @@ version: '3.9'
 
 services:
   nginx:
-    # depends_on:
-      # - wordpress
+    image: "nginx"
     build: ./requirements/nginx
     ports:
       - "443:443"
+    working_dir: /var/www/html
     restart: on-failure
     networks:
       - inception
-    image: "nginx"
-    working_dir: /var/www/html
-    # volumes:
-      # - wp-files:/var/www/html
 
 networks:
   inception:
     driver: bridge
+
