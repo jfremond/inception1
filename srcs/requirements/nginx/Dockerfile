@@ -7,7 +7,7 @@ RUN apk upgrade -U
 # Install nginx and openSSL
 RUN apk add --no-cache nginx openssl
 
-# Create directories to respect nginx organization
+# Create directories to store certification and key
 RUN mkdir -p /etc/nginx/ssl /etc/nginx/ssl/certs /etc/nginx/ssl/private
 
 # Generate ssl cert and ssl key
