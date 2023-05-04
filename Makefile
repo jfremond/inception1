@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:09:35 by jfremond          #+#    #+#              #
-#    Updated: 2023/05/01 15:53:03 by jfremond         ###   ########.fr        #
+#    Updated: 2023/05/04 13:26:14 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,21 @@ RESET			=	\033[0m
 
 $(NAME):	all
 
-all:		build create start
+all:		
+			sudo mkdir -p ~/Desktop/mariadb
+			sudo mkdir -p ~/Desktop/wordpress
+			sudo chmod 777 ~/Desktop/mariadb
+			sudo chmod 777 ~/Desktop/wordpress
+			$(MAKE) build
+			$(MAKE) create
+			$(MAKE) start
 
 clean:
 			$(DOCKER_COMPOSE) down --rmi all
 
 fclean:
 			$(DOCKER_COMPOSE) down --rmi all --volumes
+			$(MAKE) prune
 
 re:			clean all
 
@@ -70,6 +78,9 @@ ps:
 images:
 			$(DOCKER_COMPOSE) images
 
+prune:
+			docker system prune -af
+
 help:
 			@echo ""
 			@echo "$(CYAN)---------------------------------------- MAKE ----------------------------------------$(RESET)"
@@ -91,4 +102,4 @@ help:
 			@echo "$(ORANGE)make images$(RESET)	->	List images used by the containers"
 			@echo ""
 
-.PHONY:		all clean fclean re fre build create start stop ps images help
+.PHONY:		all clean fclean re fre build create start stop ps images help prune

@@ -11,6 +11,10 @@ RUN apt install mariadb-server -y
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # Copy the script
-COPY conf/script.sh .
+COPY conf/script.sh script.sh
 
+# Execute the bash script
 ENTRYPOINT [ "bash", "script.sh" ]
+
+# Expose the only allowed port
+EXPOSE 3306
