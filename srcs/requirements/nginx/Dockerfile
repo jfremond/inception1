@@ -11,9 +11,9 @@ RUN apt install nginx -y && apt install openssl -y
 RUN mkdir -p /etc/nginx/ssl/ /etc/nginx/ssl/certs /etc/nginx/ssl/private
 
 # Generate SSL certificate
-RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
-	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jfremond.42.fr" \
-	-out /etc/nginx/ssl/certs/selfsigned.crt \
+RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509\
+	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jfremond.42.fr"\
+	-out /etc/nginx/ssl/certs/selfsigned.crt\
 	-keyout /etc/nginx/ssl/private/selfsigned.key
 
 # Copy NGINX conf
