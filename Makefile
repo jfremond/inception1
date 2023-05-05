@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:09:35 by jfremond          #+#    #+#              #
-#    Updated: 2023/05/04 13:26:14 by jfremond         ###   ########.fr        #
+#    Updated: 2023/05/05 17:52:24 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ clean:
 
 fclean:
 			$(DOCKER_COMPOSE) down --rmi all --volumes
+			sudo rm -rf ~/Desktop/mariadb
+			sudo rm -rf ~/Desktop/wordpress
 			$(MAKE) prune
 
 re:			clean all
