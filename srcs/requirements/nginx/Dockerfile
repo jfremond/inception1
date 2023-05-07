@@ -2,10 +2,10 @@
 FROM debian:buster
 
 # Update and upgrade
-RUN apt update -y && apt upgrade -y
+RUN apt-get update -y && apt-get upgrade -y
 
 # Install NGINX and OpenSSL
-RUN apt install nginx -y && apt install openssl -y
+RUN apt-get install nginx -y && apt-get install openssl -y
 
 # Create directories to store certificates
 RUN mkdir -p /etc/nginx/ssl/ /etc/nginx/ssl/certs /etc/nginx/ssl/private
@@ -17,7 +17,7 @@ RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509\
 	-keyout /etc/nginx/ssl/private/selfsigned.key
 
 # Copy NGINX conf
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/conf.d
 
 # Set permissions 
 RUN chmod 755 /var/www/html

@@ -2,16 +2,16 @@
 FROM debian:buster
 
 # Update and upgrade
-RUN apt update -y && apt upgrade -y
+RUN apt-get update -y && apt-get upgrade -y
 
 # Install MariaDB
-RUN apt install mariadb-server -y
+RUN apt-get install mariadb-server -y
 
 # Copy the MariaDB config
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # Copy the script
-COPY conf/script.sh script.sh
+COPY ./conf/script.sh script.sh
 
 # Execute the bash script
 ENTRYPOINT [ "bash", "script.sh" ]

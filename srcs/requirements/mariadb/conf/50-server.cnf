@@ -1,20 +1,20 @@
-#[mysql]
-#default-character-set=utf8
+[mysql]
+default-character-set=utf8
 
 # Which category will follow the following configuration
-#[mysqld]
+[mysqld]
 
 # Where is stored our database
-#datadir = /var/lib/mysql
+datadir = /var/lib/mysql
 
 # Where MySQL can find the socket to communicate with
-#socket = /run/mysqld/mysqld.sock
+socket = /run/mysqld/mysqld.sock
 
 # Which IP addresses can connect (all of them, hence the "*")
-#bind_address=*
+bind_address=*
 
 # Which port can MySQL communicate with
-#port = 3306
+port = 3306
 
 # User
-#user = mysql
+user = mysql

@@ -2,12 +2,12 @@
 FROM debian:buster
 
 # Update and upgrade
-RUN apt update -y && apt upgrade -y
+RUN apt-get update -y && apt-get upgrade -y
 
 # Install wget, PHP (and its dependencies), and MariaDB client
-RUN apt install -y wget
+RUN apt-get install -y wget
 
-RUN apt install -y php7.3\
+RUN apt-get install -y php7.3\
 	php-fpm\
 	php-mysql\
 	mariadb-client
