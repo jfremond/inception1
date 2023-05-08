@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:09:35 by jfremond          #+#    #+#              #
-#    Updated: 2023/05/05 17:52:24 by jfremond         ###   ########.fr        #
+#    Updated: 2023/05/08 15:41:13 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,15 @@ DOCKER_OPT		=	-f
 DOCKER_FILE		=	./srcs/docker-compose.yml
 DOCKER_COMPOSE	=	$(DOCKER_CMD) $(DOCKER_OPT) $(DOCKER_FILE)
 
+###############
+#   FOLDERS   #
+###############
+
+FILEPATH	:= tools/filepath.txt
+DATA_FOLDER	:= $(shell cat ${FILEPATH})
+WP_VOLUME	:= $(shell echo ${DATA_FOLDER}/wordpress)
+DB_VOLUME	:= $(shell echo ${DATA_FOLDER}/mariadb)
+
 ##############
 #   COLORS   #
 ##############
@@ -40,22 +49,22 @@ RESET			=	\033[0m
 
 $(NAME):	all
 
-all:		
-			sudo mkdir -p ~/Desktop/mariadb
-			sudo mkdir -p ~/Desktop/wordpress
-			sudo chmod 777 ~/Desktop/mariadb
-			sudo chmod 777 ~/Desktop/wordpress
-			$(MAKE) build
-			$(MAKE) create
-			$(MAKE) start
+all:
+			@bash tools/create_folder.sh
+			@sudo mkdir -p $(WP_VOLUME)
+			@sudo mkdir -p $(DB_VOLUME)
+			@sudo chmod 777 $(WP_VOLUME)
+			@sudo chmod 777 $(DB_VOLUME)
+			@$(MAKE) build
+			@$(MAKE) create
+			@$(MAKE) start
 
 clean:
 			$(DOCKER_COMPOSE) down --rmi all
 
 fclean:
 			$(DOCKER_COMPOSE) down --rmi all --volumes
-			sudo rm -rf ~/Desktop/mariadb
-			sudo rm -rf ~/Desktop/wordpress
+			sudo rm -rf $(DATA_FOLDER)
 			$(MAKE) prune
 
 re:			clean all
@@ -104,4 +113,4 @@ help:
 			@echo "$(ORANGE)make images$(RESET)	->	List images used by the containers"
 			@echo ""
 
-.PHONY:		all clean fclean re fre build create start stop ps images help prune
+.PHONY:		all clean fclean re fre build create start stop ps images prune help

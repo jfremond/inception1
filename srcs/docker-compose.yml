@@ -61,13 +61,15 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '~/Desktop/wordpress'
+      # Move to /home/jfremond/data/wordpress
+      device: '~/Desktop/data/wordpress'
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '~/Desktop/mariadb'
+      # Move to /home/jfremond/data/wordpress
+      device: '~/Desktop/data/mariadb'
 
 
 
