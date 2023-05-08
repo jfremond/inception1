@@ -17,7 +17,7 @@ RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509\
 	-keyout /etc/nginx/ssl/private/selfsigned.key
 
 # Copy NGINX conf
-COPY conf/nginx.conf /etc/nginx/conf.d
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 # Set permissions 
 RUN chmod 755 /var/www/html
