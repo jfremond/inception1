@@ -18,4 +18,31 @@ Liste des commandes que tu peux trouver dans un Dockerfile
 	- CMD -> la commande à lancer au moment ou le container est lancé
 
 ## Docker-compose
-On commence par spécifier la version de docker-compose (version: "3")
+On commence par spécifier la version de docker-compose (version: "num")
+On définit nos services (containers) (dans notre cas, nginx, wordpress et mariadb)
+Il y a plusieurs choses à définir dans nos services
+	- La liste des services (services)
+	- Le nom du service (nom_du_service)
+	- Le nom de l'image (image)
+	- Les dépendances s'il y en a (afin d'être sur que tout démarre au bon moment) (depends_on)
+	- Les ports (ports)
+	- Le réseau (pour dire à Docker de mettre ces deux containers dans le même réseau pour qu'ils puissent commniquer)(networks)
+On définit ensuite notre réseau et les spécificités de celui-ci
+driver: la_maniere_dont_est_liee_nos_containers
+
+
+Le fichier docker-compose ressemble maintenant à ceci
+version: "num_version"
+services:
+	nom_du_service:
+		image: nom_de_l_image
+		depends_on:
+			- nom_de_la_dependance
+		ports:
+			- "port_machine:port_du_container"
+		networks:
+			- nom_du_reseau
+
+networks:
+	nom_du_reseau:
+		driver: bridge
