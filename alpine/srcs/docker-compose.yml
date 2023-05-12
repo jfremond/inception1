@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    networks:
+      - inception
+    build: "requirements/nginx"
+    ports:
+      - "443:443"
+    restart: on-failure
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    networks:
+      - inception
+    build: "requirements/wordpress"
+    restart: on-failure
+    expose:
+      - "9000"
+
+networks:
+    inception:
+      driver: bridge
