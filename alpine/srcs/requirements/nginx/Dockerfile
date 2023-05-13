@@ -20,7 +20,7 @@ RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 COPY conf/nginx.conf /etc/nginx/http.d/
 
 # Copy html page (will be removed when wordpress is done)
-COPY tools/index.html /var/www/html/
+COPY tools/index.html /var/www/localhost/htdocs
 
 # Run nginx in foreground
 CMD [ "nginx", "-g", "daemon off;" ]
