@@ -19,7 +19,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 # Make CLI executable by user
 RUN chmod +x wp-cli.phar
-# # Move it to right place
+# Move it to right place
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 # Copy script
