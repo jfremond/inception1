@@ -20,10 +20,19 @@ NAME			=	inception
 #   COMMANDS   #
 ################
 
-DOCKER_CMD		=	docker compose
+DOCKER_CMD		=	docker-compose
 DOCKER_OPT		=	-f
 DOCKER_FILE		=	./srcs/docker-compose.yml
 DOCKER_COMPOSE	=	$(DOCKER_CMD) $(DOCKER_OPT) $(DOCKER_FILE)
+
+###############
+#   FOLDERS   #
+###############
+
+FILEPATH	:= tools/filepath.txt
+DATA_FOLDER	:= $(shell cat ${FILEPATH})
+WP_VOLUME	:= $(shell echo ${DATA_FOLDER}/wordpress)
+DB_VOLUME	:= $(shell echo ${DATA_FOLDER}/mariadb)
 
 ##############
 #   COLORS   #
@@ -41,6 +50,11 @@ RESET			=	\033[0m
 $(NAME):	all
 
 all:
+			@bash tools/create_folder.sh
+			@sudo mkdir -p $(WP_VOLUME)
+			@sudo mkdir -p $(DB_VOLUME)
+			@sudo chmod 777 $(WP_VOLUME)
+			@sudo chmod 777 $(DB_VOLUME)
 			@$(MAKE) build
 			@$(MAKE) create
 			@$(MAKE) start
@@ -50,6 +64,7 @@ clean:
 
 fclean:
 			$(DOCKER_COMPOSE) down --rmi all --volumes
+			sudo rm -rf $(DATA_FOLDER)
 			$(MAKE) prune
 
 re:			clean all

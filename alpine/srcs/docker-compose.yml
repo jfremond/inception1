@@ -6,19 +6,32 @@ services:
     container_name: nginx
     networks:
       - inception
+    depends_on:
+      - wordpress
     build: "requirements/nginx"
     ports:
       - "443:443"
     restart: on-failure
+
   wordpress:
     image: wordpress
     container_name: wordpress
     networks:
       - inception
     build: "requirements/wordpress"
+    volumes:
+      - wordpress:/var/www/wordpress
     restart: on-failure
     expose:
       - "9000"
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '~/jfremond/data/wordpress'
 
 networks:
     inception:
