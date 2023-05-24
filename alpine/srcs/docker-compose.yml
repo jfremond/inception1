@@ -34,7 +34,7 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     env_file: .env
-    restart: on-failure
+    restart: always
     expose:
       - "3306"
 
