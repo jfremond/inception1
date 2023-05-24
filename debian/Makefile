@@ -20,7 +20,7 @@ NAME			=	inception
 #   COMMANDS   #
 ################
 
-DOCKER_CMD		=	docker-compose
+DOCKER_CMD		=	docker compose
 DOCKER_OPT		=	-f
 DOCKER_FILE		=	./srcs/docker-compose.yml
 DOCKER_COMPOSE	=	$(DOCKER_CMD) $(DOCKER_OPT) $(DOCKER_FILE)
