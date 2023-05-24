@@ -25,6 +25,19 @@ services:
     expose:
       - "9000"
 
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    networks:
+      - inception
+    build: "requirements/wordpress"
+    volumes:
+      - mariadb:/var/lib/mysql
+    env_file: .env
+    restart: on-failure
+    expose:
+      - "3306"
+
 volumes:
   wordpress:
     driver: local
@@ -32,6 +45,12 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '~/jfremond/data/wordpress'
+  mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '~/jfremond/data/mariadb'
 
 networks:
     inception:
