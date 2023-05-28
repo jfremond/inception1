@@ -30,7 +30,7 @@ services:
     container_name: mariadb
     networks:
       - inception
-    build: "requirements/wordpress"
+    build: "requirements/mariadb"
     volumes:
       - mariadb:/var/lib/mysql
     env_file: .env
