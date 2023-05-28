@@ -7,6 +7,6 @@ RUN apk upgrade -U
 # Install MariaDB
 RUN apk add --no-cache mariadb mariadb-client 
 
-# COPY ./tools/caca.sh caca.sh
-COPY ./tools/my.cnf a
-# ENTRYPOINT [ "sh", "caca.sh" ]
+COPY ./tools/caca.sh caca.sh
+
+ENTRYPOINT [ "sh", "caca.sh" ]
