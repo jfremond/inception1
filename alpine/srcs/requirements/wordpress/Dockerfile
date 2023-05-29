@@ -5,7 +5,7 @@ FROM alpine:3.18
 RUN apk upgrade -U
 
 # Install wget, PHP and its dependencies
-RUN apk add --no-cache wget php81 php81-fpm
+RUN apk add --no-cache wget php81 php81-fpm php-mysqli
 #mariadb-client
 
 RUN wget https://wordpress.org/wordpress-6.2.tar.gz -P /var/www
