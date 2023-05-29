@@ -18,9 +18,12 @@ services:
     container_name: wordpress
     networks:
       - inception
+    depends_on:
+      - mariadb
     build: "requirements/wordpress"
     volumes:
       - wordpress:/var/www/wordpress
+    env_file: .env
     restart: on-failure
     expose:
       - "9000"
@@ -34,7 +37,7 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     env_file: .env
-    restart: always
+    restart: on-failure
     expose:
       - "3306"
 
