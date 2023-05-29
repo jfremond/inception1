@@ -8,6 +8,8 @@ services:
       - inception
     depends_on:
       - wordpress
+    volumes:
+      - wordpress:/var/www/wordpress
     build: "requirements/nginx"
     ports:
       - "443:443"
