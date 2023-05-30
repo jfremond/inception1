@@ -2,7 +2,7 @@
 
 while true; do echo "pouet"; done
 
-# Lancer mysql en arriere plan et attendre qu'il soit lance (demande a Google)
+# Lancer mysql en arriere plan (& apres la commande) et attendre qu'il soit lance (demande a Google)
 # Installer bases de donnees (cherche la commande)
 # Config root (en SQL)
 # Config nouvel user (en SQL)
