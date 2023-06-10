@@ -12,13 +12,15 @@ RUN wget https://wordpress.org/wordpress-6.2.tar.gz -P /var/www
 
 RUN cd /var/www && tar -xzf wordpress-6.2.tar.gz && rm wordpress-6.2.tar.gz
 
-COPY ./conf/www.conf /etc/php81/php-fpm.d/www.conf
+# Change where PHP-FPM is listening
+RUN sed -i 's/127.0.0.1:9000/wordpress:9000/' /etc/php81/php-fpm.d/www.conf
 
 # Install wordpress CLI
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 # Make CLI executable by user
 RUN chmod +x wp-cli.phar
+
 # Move it to right place
 RUN mv wp-cli.phar /usr/local/bin/wp
 
