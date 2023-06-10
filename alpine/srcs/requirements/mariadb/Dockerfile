@@ -1,12 +1,20 @@
 # Download baseImage
-FROM alpine:3.17.3
+FROM debian:buster
 
-# Update and upgrade alpine
-RUN apk upgrade -U
+# Update and upgrade
+RUN apt-get update -y && apt-get upgrade -y
 
 # Install MariaDB
-RUN apk add --no-cache mariadb mariadb-client 
+RUN apt-get install mariadb-server -y
 
-COPY ./tools/caca.sh caca.sh
+# Copy the MariaDB config
+COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-ENTRYPOINT [ "sh", "caca.sh" ]
+# Copy the script
+COPY ./conf/script.sh script.sh
+
+# Execute the bash script
+ENTRYPOINT [ "bash", "script.sh" ]
+
+# Expose the only allowed port
+EXPOSE 3306

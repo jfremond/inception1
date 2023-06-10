@@ -1,6 +1,3 @@
-[mysql]
-default-character-set=utf8
-
 # Which category will follow the following configuration
 [mysqld]
 
@@ -18,6 +15,3 @@ port = 3306
 
 # User
 user = mysql
-
-# Do not clear environment
-clear_env = no
