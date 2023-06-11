@@ -5,9 +5,9 @@ FROM alpine:3.17.3
 RUN apk upgrade -U
 
 # Install wget, PHP and its dependencies
-RUN apk add --no-cache wget php81 php81-fpm php-mysqli php81-cli php81-phar 
+RUN apk add --no-cache wget php81 php81-fpm php-mysqli php81-cli php81-phar php81-iconv
 
-# (2 last ones nedded for wp-cli) 
+# (2 last ones nedded for wp-cli)
 RUN apk add --no-cache mariadb-client
 
 RUN wget https://wordpress.org/latest.tar.gz -P /var/www

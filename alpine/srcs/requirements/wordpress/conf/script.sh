@@ -52,4 +52,11 @@ wp core install	--allow-root \
 				--admin_email=$ADMIN_EMAIL \
 				--path='/var/www/wordpress'
 
+# wp user create	--allow-root \
+# 				--role=author $USER1_LOGIN $USER1_EMAIL \
+# 				--user_pass=$USER1_PASSWORD \
+# 				--path='/var/www/wordpress' >> /log.txt
+
+mkdir -p /run/php
+
 exec /usr/sbin/php-fpm81 -F
