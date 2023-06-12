@@ -4,10 +4,9 @@ FROM alpine:3.17.3
 # Update and upgrade alpine
 RUN apk upgrade -U
 
-# Install wget, PHP and its dependencies
+# Install wget, PHP, its dependencies (3 last ones nedded for wp-cli), mariadb-client and wordpress
 RUN apk add --no-cache wget php81 php81-fpm php-mysqli php81-cli php81-phar php81-iconv
 
-# (2 last ones nedded for wp-cli)
 RUN apk add --no-cache mariadb-client
 
 RUN wget https://wordpress.org/latest.tar.gz -P /var/www
@@ -28,7 +27,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 # Copy script
 COPY ./conf/script.sh script.sh
-COPY ./conf/wp-config.php /var/www/wordpress/wp-config.php 
 
 # Execute script
 ENTRYPOINT [ "sh", "script.sh" ]
