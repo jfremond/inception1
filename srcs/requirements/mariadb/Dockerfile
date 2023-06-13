@@ -29,16 +29,17 @@ FROM alpine:3.17.3
 RUN apk upgrade -U
 
 # Install MariaDB
-RUN apk add --no-cache mariadb
-#mariadb-client
+RUN apk add --no-cache mariadb mariadb-client
 
 # Create directory that'll contain mysql server pid (mysqld.pid) and unix socket (mysqld.sock)
 # And give ownership to user and group mysql
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
 # Copy MariaDB config
-COPY ./conf/my_conf.ini ./etc/my.cnf.d/mariadb-server.cnf
+COPY ./conf/my_conf.ini ./etc/my.cnf.d/
 
 # Copy the script
+COPY ./conf/script.sh .
 
 # Execute the script
+ENTRYPOINT [ "sh", "script.sh" ]

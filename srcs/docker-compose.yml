@@ -27,7 +27,8 @@ services:
     build: "requirements/wordpress"
     volumes:
       - wordpress:/var/www/wordpress
-    env_file: .env
+    env_file:
+      - .env
     restart: on-failure
     expose:
       - "9000"
@@ -40,7 +41,8 @@ services:
     build: "requirements/mariadb"
     volumes:
       - mariadb:/var/lib/mysql
-    env_file: .env
+    env_file:
+      - .env
     restart: on-failure
     expose:
       - "3306"
@@ -60,5 +62,5 @@ volumes:
       device: '~/jfremond/data/mariadb'
 
 networks:
-    inception:
-      driver: bridge
+  inception:
+    driver: bridge
