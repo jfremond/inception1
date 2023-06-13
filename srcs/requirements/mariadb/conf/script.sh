@@ -44,3 +44,4 @@ exec mysqld_safe
 # Config nouvel user (en SQL)
 # Change les droits de /var/lib/mysql
 # Kill procssus en arriere plan et le lancer en premier plan (recupere id processus avec "$!" ou pid_file = "")
+

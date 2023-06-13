@@ -36,10 +36,8 @@ RUN apk add --no-cache mariadb
 # And give ownership to user and group mysql
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
-# RUN mkdir -p /run/mysqld/ && chown -R mysql:mysql /run/mysqld
-
 # Copy MariaDB config
-# COPY ./conf/mariadb-server.cnf ./etc/my.cnf.d/
+COPY ./conf/my_conf.ini ./etc/my.cnf.d/mariadb-server.cnf
 
 # Copy the script
 
