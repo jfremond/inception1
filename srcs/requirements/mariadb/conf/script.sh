@@ -35,3 +35,12 @@ mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
 
 # Restarting the MySQL server in safe mode
 exec mysqld_safe
+
+
+# Lancer mysql en arriere plan (& apres la commande) et attendre qu'il soit lance (demande a Google)
+# mysqld &
+# Installer base de donnees (cherche la commande)
+# Config root (en SQL)
+# Config nouvel user (en SQL)
+# Change les droits de /var/lib/mysql
+# Kill procssus en arriere plan et le lancer en premier plan (recupere id processus avec "$!" ou pid_file = "")
