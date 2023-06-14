@@ -12,7 +12,7 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 						--dbuser=$MYSQL_USER \
 						--dbpass=$MYSQL_PASSWORD \
 						--dbhost=mariadb:3306 --path='/var/www/wordpress'
-	sleep 2
+	# sleep 5
 	wp db create
 	wp core install	--allow-root \
 					--url=$DOMAIN_NAME \
