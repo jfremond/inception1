@@ -28,21 +28,21 @@
 # #         # delete all root user except the one with localhost as host
 # #         echo "DELETE FROM mysql.user WHERE User = 'root' AND Host != 'localhost';"
 # #         # change root password
-# #         echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MYSQL_ROOT_PASSWORD}');"
+# #         echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${DB_ROOT_PASS}');"
 # #         # create new user
-# #         echo "CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+# #         echo "CREATE USER '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASS}';"
 # #         # give all permissions to the new user
-# #         echo "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';"
+# #         echo "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';"
 # #         # apply modifications to the grant table (maybe not necessary)
 # #         echo "FLUSH PRIVILEGES;"
 # #     } | mariadbd --bootstrap
 # # fi
 
 # # Check if the database is already created, and if not, create it and set it up.
-# MYSQL_DATABASE=inception
-# MYSQL_USER=inception_user
-# MYSQL_PASSWORD=inception_pass
-# MYSQL_ROOT_PASSWORD=rootpass
+# DB_NAME=inception
+# DB_USER=inception_user
+# DB_PASS=inception_pass
+# DB_ROOT_PASS=rootpass
 # if [  -d /var/lib/mysql/mysql ]; then
 # 	printf -- "MariaDB already installed, skipping\n"
 # 	exec mariadbd
@@ -59,11 +59,11 @@
 # 		# delete all root user except the one with localhost as host
 # 		echo "DELETE FROM mysql.user WHERE User = 'root' AND Host != 'localhost';"
 # 		# change root password
-# 		echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MYSQL_ROOT_PASSWORD}');"
+# 		echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${DB_ROOT_PASS}');"
 # 		# create new user
-# 		echo "CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+# 		echo "CREATE USER '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASS}';"
 # 		# give all permissions to the new user
-# 		echo "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';"
+# 		echo "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';"
 # 		# apply modifications to the grant table (maybe not necessary)
 # 		echo "FLUSH PRIVILEGES;"
 # 		} | mariadbd --bootstrap
@@ -88,22 +88,22 @@
 service mysql start;
 
 # Create our database if it doesn't already exist
-mysql -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
+mysql -e "CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;"
 
 # Create a user that can manipulate the database
-mysql -e "CREATE USER IF NOT EXISTS \`${MYSQL_USER}\`@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+mysql -e "CREATE USER IF NOT EXISTS \`${DB_USER_NAME}\`@'localhost' IDENTIFIED BY '${DB_USER_PASS}';"
 
 # Grant all privileges to newly created user
-mysql -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO \`${MYSQL_USER}\`@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+mysql -e "GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO \`${DB_USER_NAME}\`@'%' IDENTIFIED BY '${DB_USER_PASS}';"
 
 # Change root password
-mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
+mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASS}';"
 
 # Take changes into account
 mysql -e "FLUSH PRIVILEGES;"
 
 # Shutdown MySQL
-mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
+mysqladmin -u root -p$DB_ROOT_PASS shutdown
 
 # Restarting the MySQL server in safe mode
 exec mysqld_safe

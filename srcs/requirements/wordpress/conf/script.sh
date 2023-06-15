@@ -8,24 +8,24 @@ echo "Installing..."
 cd /var/www/wordpress
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
 	wp config create	--allow-root \
-						--dbname=$MYSQL_DATABASE \
-						--dbuser=$MYSQL_USER \
-						--dbpass=$MYSQL_PASSWORD \
+						--dbname=$DB_NAME \
+						--dbuser=$DB_USER_NAME \
+						--dbpass=$DB_USER_PASS \
 						--dbhost=mariadb:3306 --path='/var/www/wordpress'
 	# sleep 5
 	wp db create
 	wp core install	--allow-root \
 					--url=$DOMAIN_NAME \
 					--title=$SITE_TITLE \
-					--admin_user=$ADMIN_USER \
-					--admin_password=$ADMIN_PASSWORD \
-					--admin_email=$ADMIN_EMAIL \
+					--admin_user=$WP_ADMIN_NAME \
+					--admin_password=$WP_ADMIN_PASS \
+					--admin_email=$WP_ADMIN_MAIL \
 					--path='/var/www/wordpress'
 
-	# wp user create	--allow-root \
-	# 				--role=author $USER1_LOGIN $USER1_EMAIL \
-	# 				--user_pass=$USER1_PASSWORD \
-	# 				--path='/var/www/wordpress' >> /log.txt
+	wp user create	--allow-root \
+					--role=author $WP_USER_NAME $WP_USER_MAIL \
+					--user_pass=$WP_USER_PASS \
+					--path='/var/www/wordpress'
 fi
 
 # To store temporary files and sockets related to PHP processes
