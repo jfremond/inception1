@@ -18,7 +18,7 @@ mariadb-install-db --auth-root-authentication-method=normal --basedir=/usr --dat
 cat << break > tmp_mdb
 FLUSH PRIVILEGES;
 DELETE FROM mysql.user WHERE User = 'root' AND Host != 'localhost';
-SET PASSWORD FOR 'estoffel'@'localhost' = PASSWORD('$DB_ROOT_PASS');
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$DB_ROOT_PASS');
 CREATE USER '$DB_USER_NAME'@'%' IDENTIFIED BY '$DB_USER_PASS';
 GRANT ALL ON $DB_NAME.* TO '$DB_USER_NAME'@'%' IDENTIFIED BY '$DB_USER_PASS';
 FLUSH PRIVILEGES;
