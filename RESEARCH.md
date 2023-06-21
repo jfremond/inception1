@@ -20,10 +20,21 @@
 - /var (files of variable size (files expected to grow to very large sizes))
 
 # PID 1
+- Mostly known as "init". It is the first Linux user-mode process created, which runs until the system shuts down. init manages the services (called daemons under Linux).
+- If you run an application inside a Docker container, it will be assigned PID 1.
 
 # BEST PRACTICES FOR WRITING DOCKERFILES
+- Use the official Docker image
+- Limit the amount of RUN (more RUN more cacheable units, more cache)
+- Use specific tags (alpine:3.17.3)
+- Use multi-stage builds (more than one FROM in the Dockerfile)
 
 # DOCKER
+## HOW DOES DOCKER WORK?
+## HOW DOES DOCKER-COMPOSE WORK?
+## WHAT IS THE DIFFERENCE BETWEEN A DOCKER IMAGE USED W/ DOCKER-COMPOSE AND W/OUT IT?
+## WHAT IS THE BENEFIT OF DOCKER COMPARED TO WMs?
+## WHAT IS THE PERTINENCE OF THE DIRECTORY STRUCTURE FOR THIS PROJECT?
 
 # NGINX
 
