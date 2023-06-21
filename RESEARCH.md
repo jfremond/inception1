@@ -19,6 +19,10 @@
 - /tmp (temporary files)
 - /var (files of variable size (files expected to grow to very large sizes))
 
+# PID 1
+
+# BEST PRACTICES FOR WRITING DOCKERFILES
+
 # DOCKER
 
 # NGINX
