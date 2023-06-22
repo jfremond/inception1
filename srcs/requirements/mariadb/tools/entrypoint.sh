@@ -5,7 +5,7 @@ chmod 755 tmp_mdb
 
 if [ -d /var/lib/mysql/mysql ]; then
 	echo "Already set up, starting..."
-	exec /usr/bin/mysqld --user=mysql --skip_networking=0 --console $@
+	exec /usr/bin/mariadbd --user=mysql --skip-networking=0
 	exit 1
 fi
 
@@ -24,8 +24,8 @@ GRANT ALL ON $DB_NAME.* TO '$DB_USER_NAME'@'%' IDENTIFIED BY '$DB_USER_PASS';
 FLUSH PRIVILEGES;
 break
 
-/usr/bin/mysqld --user=mysql --bootstrap --verbose=0 --skip-name-resolve --skip-networking=0 < tmp_mdb
+/usr/bin/mariadbd --user=mysql --bootstrap --skip-name-resolve --skip-networking=0 < tmp_mdb
 
 rm -f tmp_mdb
 
-exec /usr/bin/mysqld --user=mysql --skip_networking=0 --console $@
+exec /usr/bin/mariadbd --user=mysql --skip-networking=0
