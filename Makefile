@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:09:35 by jfremond          #+#    #+#              #
-#    Updated: 2023/05/08 15:41:13 by jfremond         ###   ########.fr        #
+#    Updated: 2023/06/27 09:22:37 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,8 @@ DOCKER_COMPOSE	=	$(DOCKER_CMD) $(DOCKER_OPT) $(DOCKER_FILE)
 #   FOLDERS   #
 ###############
 
-FILEPATH	:= tools/filepath.txt
-DATA_FOLDER	:= $(shell cat ${FILEPATH})
-WP_VOLUME	:= $(shell echo ${DATA_FOLDER}/wordpress)
-DB_VOLUME	:= $(shell echo ${DATA_FOLDER}/mariadb)
+WP_VOLUME	=	~/jfremond/data/wordpress
+DB_VOLUME	=	~/jfremond/data/mariadb
 
 ##############
 #   COLORS   #
@@ -50,7 +48,7 @@ RESET			=	\033[0m
 $(NAME):	all
 
 all:
-			@bash tools/create_folder.sh
+			# @bash tools/create_folder.sh
 			@sudo mkdir -p $(WP_VOLUME)
 			@sudo mkdir -p $(DB_VOLUME)
 			@sudo chmod 777 $(WP_VOLUME)
