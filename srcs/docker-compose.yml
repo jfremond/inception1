@@ -8,7 +8,7 @@ services:
     env_file: .env
     restart: on-failure
     volumes:
-      - wordpress:/var/www/wordpress
+      - wp_data:/var/www/wordpress
     networks:
       - inception
     depends_on:
@@ -23,7 +23,7 @@ services:
     env_file: .env
     restart: on-failure
     volumes:
-      - wordpress:/var/www/wordpress
+      - wp_data:/var/www/wordpress
     networks:
       - inception
     depends_on:
@@ -38,7 +38,7 @@ services:
     env_file: .env
     restart: on-failure
     volumes:
-      - mariadb:/var/lib/mysql
+      - db_data:/var/lib/mysql
     networks:
       - inception
     expose:
@@ -46,19 +46,18 @@ services:
 
 
 volumes:
-  wordpress:
+  wp_data:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '~/jfremond/data/wordpress'
-  mariadb:
+      device: '~/jfremond/data/wp_data'
+  db_data:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '~/jfremond/data/mariadb'
+      device: '~/jfremond/data/db_data'
 
 networks:
   inception:
-    # driver: bridge
