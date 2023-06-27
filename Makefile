@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:09:35 by jfremond          #+#    #+#              #
-#    Updated: 2023/06/27 09:22:37 by jfremond         ###   ########.fr        #
+#    Updated: 2023/06/27 17:44:32 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,6 @@ RESET			=	\033[0m
 $(NAME):	all
 
 all:
-			# @bash tools/create_folder.sh
 			@sudo mkdir -p $(WP_VOLUME)
 			@sudo mkdir -p $(DB_VOLUME)
 			@sudo chmod 777 $(WP_VOLUME)
