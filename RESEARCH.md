@@ -29,12 +29,21 @@
 - Use specific tags (alpine:3.17.3)
 - Use multi-stage builds (more than one FROM in the Dockerfile)
 
-
 # PROJECT OVERVIEW
 ## HOW DOES DOCKER WORK?
+- Docker est un logiciel qui permet de gérer des containers. Un container contient tout le code et les dépendances nécéssaires afin que l'application s'exécute rapidement et de manière fiable dans différents OS.
+Avantages Docker : 
+	- Portabilité : Les containers peuvent être déployés sur n'importe quel OS qui prend en charge Docker.
+	- Isolation : Chaque container est isolé des autres, chaque container à ses propres fichiers, ressources, et processus. 
+
 ## HOW DOES DOCKER-COMPOSE WORK?
+
 ## WHAT IS THE DIFFERENCE BETWEEN A DOCKER IMAGE USED W/ DOCKER-COMPOSE AND W/OUT IT?
+
 ## WHAT IS THE BENEFIT OF DOCKER COMPARED TO WMs?
+- Les ressources sont partagées avec la machine hôte, ce qui permet de lancer beaucoup de containers contre peu de VMs.
+- Docker utilise moins d'espace, si la même image est utilisée plusieurs fois, Docker garde une copie et la partage avec chaque container
+
 ## WHAT IS THE PERTINENCE OF THE DIRECTORY STRUCTURE FOR THIS PROJECT?
 
 # DOCKER
