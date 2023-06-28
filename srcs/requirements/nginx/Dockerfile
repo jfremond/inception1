@@ -15,4 +15,4 @@ RUN	apk upgrade -U &&\
 COPY	conf/nginx.conf /etc/nginx/http.d/
 
 # Run nginx in foreground
-CMD	[ "nginx", "-g", "daemon off;" ]
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
