@@ -37,17 +37,23 @@ Avantages Docker :
 	- Isolation : Chaque container est isolé des autres, chaque container à ses propres fichiers, ressources, et processus. 
 
 ## HOW DOES DOCKER-COMPOSE WORK?
+docker-compose fonctionne en lisant sur un fichier YAML (docker-compose.yml) pour définir et exécuter des applications Docker composées de plusieurs containers
 
 ## WHAT IS THE DIFFERENCE BETWEEN A DOCKER IMAGE USED W/ DOCKER-COMPOSE AND W/OUT IT?
+- Sans docker-compose, chaque container est configuré, exécuté, et géré sépararément.
+- docker-compose permet de gérér et d'orchester des applications multi-containers grace au ficher YAML. De plus, on peut démmarrer plusieurs containers à la fois grâce à docker-compose.
 
 ## WHAT IS THE BENEFIT OF DOCKER COMPARED TO WMs?
 - Les ressources sont partagées avec la machine hôte, ce qui permet de lancer beaucoup de containers contre peu de VMs.
-- Docker utilise moins d'espace, si la même image est utilisée plusieurs fois, Docker garde une copie et la partage avec chaque container
+- Docker utilise moins d'espace, si la même image est utilisée plusieurs fois, Docker garde une copie et la partage avec chaque container.
 
 ## WHAT IS THE PERTINENCE OF THE DIRECTORY STRUCTURE FOR THIS PROJECT?
+- La plupart des sites d'aujourd'hui sont divisés en micro-application et la structure des fichiers reflète bien ça
 
 # DOCKER
 ## WHAT IS THE DIFFERENCE BETWEEN CMD AND ENTRYPOINT?
+- ENTRYPOINT est utilisé pour spécifier la commande de base qui est exécutée lorsque le container démarre.
+- CMD est utilisé pour fournir les paramètres par défaut pour cette commande de base.
 
 # DOCKER NETWORK
 ## SIMPLE EXPLANATION OF DOCKER NETWORK
@@ -61,8 +67,7 @@ nmap --script ssl-enum-ciphers -p 443 jfremond.42.fr
 # WORDPRESS
 mysql -u root -p
 show databases;
-use wordpress;
-show tables;
+show tables in wp_db;
 
 
 # MARIADB
