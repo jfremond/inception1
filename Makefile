@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:09:35 by jfremond          #+#    #+#              #
-#    Updated: 2023/06/27 17:44:32 by jfremond         ###   ########.fr        #
+#    Updated: 2023/06/28 15:33:44 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ DOCKER_COMPOSE	=	$(DOCKER_CMD) $(DOCKER_OPT) $(DOCKER_FILE)
 #   FOLDERS   #
 ###############
 
-WP_VOLUME	=	~/jfremond/data/wordpress
-DB_VOLUME	=	~/jfremond/data/mariadb
+WP_VOLUME	=	~/jfremond/data/wp_data
+DB_VOLUME	=	~/jfremond/data/db_data
 
 ##############
 #   COLORS   #
@@ -61,7 +61,7 @@ clean:
 
 fclean:
 			$(DOCKER_COMPOSE) down --rmi all --volumes
-			sudo rm -rf $(DATA_FOLDER)
+			sudo rm -rf ~/jfremond/data/
 			$(MAKE) prune
 
 re:			clean all
