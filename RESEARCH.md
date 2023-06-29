@@ -57,6 +57,8 @@ docker-compose fonctionne en lisant sur un fichier YAML (docker-compose.yml) pou
 
 # DOCKER NETWORK
 ## SIMPLE EXPLANATION OF DOCKER NETWORK
+- Permet la communication entre les containers de Docker et le monde extérieur via la machine hôte.
+- Permet aux containers de communiquer entre eux
 
 # NGINX
 ## DEMONSTRATE THE USE OF A TLSv1.2/v1.3 CERTIFICATE
