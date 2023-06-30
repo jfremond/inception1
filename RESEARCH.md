@@ -61,15 +61,21 @@ docker-compose fonctionne en lisant sur un fichier YAML (docker-compose.yml) pou
 - Permet aux containers de communiquer entre eux
 
 # NGINX
+## WHAT IS NGINX?
+NGINX est un logiciel open-source qui permer de gérér des services web.
 ## DEMONSTRATE THE USE OF A TLSv1.2/v1.3 CERTIFICATE
 nmap --script ssl-enum-ciphers -p 443 jfremond.42.fr
 ## WHAT IS A SSL/TLS CERTIFICATE?
-
+Un certificat SSL/TLS est un objet numérique qui permet aux systèmes de vérifier l'identité puis d'établir une connexion réseau cryptée avec un autre système à l'aide du protocole Secure Sockets Layer/Transport Layer Security (SSL/TLS).
 
 # WORDPRESS
+## WHAT IS WORDPRESS?
+Wordpress est une plateforme gratuite et open-source de création de site internet.
+
+# MARIADB
+## WHAT IS MARIADB?
+MariaDB est un système open-source de management de base de données compatible avec MySQL.
+
 mysql -u root -p
 show databases;
 show tables in wp_db;
-
-
-# MARIADB
