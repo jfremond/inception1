@@ -63,6 +63,11 @@ docker-compose fonctionne en lisant sur un fichier YAML (docker-compose.yml) pou
 # NGINX
 ## WHAT IS NGINX?
 NGINX est un logiciel open-source qui permer de gérér des services web.
+> nginx -g daemon off;
+- -g est utilise pour definir une directive
+- -g daemon off permet de faire tourner NGINX en premier plan, ce qui nous permet de voir les logs et les messages d'erreur dans le terminal ou nginx a ete lance
+- permet d'eteindre le server nginx quand on arrete le server
+
 ## DEMONSTRATE THE USE OF A TLSv1.2/v1.3 CERTIFICATE
 nmap --script ssl-enum-ciphers -p 443 jfremond.42.fr
 ## WHAT IS A SSL/TLS CERTIFICATE?
@@ -71,6 +76,8 @@ Un certificat SSL/TLS est un objet numérique qui permet aux systèmes de vérif
 # WORDPRESS
 ## WHAT IS WORDPRESS?
 Wordpress est une plateforme gratuite et open-source de création de site internet.
+## WHAT IS PHP-FPM?
+PHP-FPM est une implementation alternative de PHP FastCGI qui permet la communication entre un server web et PHP, base sur le protocol FastCGI.
 
 # MARIADB
 ## WHAT IS MARIADB?
