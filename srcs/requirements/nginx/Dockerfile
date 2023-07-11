@@ -4,7 +4,7 @@ FROM	alpine:3.17.4
 # Update and upgrade alpine
 # Install nginx and openSSL
 # Generate ssl cert and key
-RUN	apk upgrade -U &&\
+RUN apk update && apk upgrade &&\
 	apk add --no-cache nginx openssl &&\
 	openssl req -newkey rsa:4096 -days 365 -nodes -x509\
 	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jfremond.42.fr/UID=jfremond"\
@@ -15,4 +15,5 @@ RUN	apk upgrade -U &&\
 COPY	conf/nginx.conf /etc/nginx/http.d/
 
 # Run nginx in foreground
-ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
+ENTRYPOINT [ "nginx" ]
+CMD [ "-g", "daemon off;" ]

@@ -8,7 +8,7 @@ FROM alpine:3.17.4
 # Change where PHP-FPM is listening
 # Install wordpress CLI
 # Make it executable and move it to right place
-RUN apk upgrade -U &&\
+RUN apk update && apk upgrade &&\
 	apk add --no-cache wget php81 php81-fpm php-mysqli php81-cli php81-phar php81-iconv &&\
 	apk add --no-cache mariadb-client &&\
 	wget https://wordpress.org/wordpress-6.2.tar.gz -P /var/www &&\
@@ -19,7 +19,7 @@ RUN apk upgrade -U &&\
 	mv wp-cli.phar /usr/local/bin/wp
 
 # Copy script
-COPY ./conf/script.sh script.sh
+COPY ./tools/wp_setup.sh wp_setup.sh
 
 # Execute script
-ENTRYPOINT [ "sh", "script.sh" ]
+ENTRYPOINT [ "sh", "wp_setup.sh" ]
