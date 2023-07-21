@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 02:44:25 by jfremond          #+#    #+#              #
-#    Updated: 2023/07/11 13:44:28 by jfremond         ###   ########.fr        #
+#    Updated: 2023/07/21 15:13:48 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ cd /var/www/wordpress
 # Create a new database
 # Run the standard WordPress installation process
 # Create a new user
+# TODO change following path to ./wp-config.php since I'm already in /var/www/wordpress
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
 	wp config create	--allow-root \
 						--dbname=$DB_NAME \
 						--dbuser=$DB_USER_NAME \
 						--dbpass=$DB_USER_PASS \
 						--dbhost=mariadb:3306 --path='/var/www/wordpress'
+
 	wp db create
 
 	wp core install	--allow-root \
