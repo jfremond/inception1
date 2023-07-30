@@ -6,9 +6,11 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 20:51:33 by jfremond          #+#    #+#              #
-#    Updated: 2023/07/11 15:58:39 by jfremond         ###   ########.fr        #
+#    Updated: 2023/07/30 11:24:00 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+sleep 5
 
 # Set up database if not already set
 # --user=mysql -> Run mariadbd daemon as mysql (default user)

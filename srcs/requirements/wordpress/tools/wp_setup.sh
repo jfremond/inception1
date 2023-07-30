@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 02:44:25 by jfremond          #+#    #+#              #
-#    Updated: 2023/07/25 16:00:52 by jfremond         ###   ########.fr        #
+#    Updated: 2023/07/30 11:25:56 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 					--user_pass=$WP_USER_PASS \
 					--path='/var/www/wordpress'
 fi
+
+# mkdir -p /run/php
 
 # Run PHP-FPM in foreground
 exec /usr/sbin/php-fpm81 -F
