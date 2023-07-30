@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nginx:
-    image: nginx
+    image: nginx:$TAG
     container_name: nginx
     build: "requirements/nginx"
     env_file: .env
@@ -17,7 +17,7 @@ services:
       - "443:443"
 
   wordpress:
-    image: wordpress
+    image: wordpress:$TAG
     container_name: wordpress
     build: "requirements/wordpress"
     env_file: .env
@@ -32,7 +32,7 @@ services:
       - "9000"
 
   mariadb:
-    image: mariadb
+    image: mariadb:$TAG
     container_name: mariadb
     build: "requirements/mariadb"
     env_file: .env
