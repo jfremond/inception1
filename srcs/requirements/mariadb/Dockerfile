@@ -1,5 +1,5 @@
 	# Download baseImage
-FROM alpine:3.17.4
+FROM alpine:3.17.6
 
 # Upgrade and update alpine
 # Install MariaDB

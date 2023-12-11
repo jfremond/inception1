@@ -1,5 +1,5 @@
 # Download baseImage
-FROM alpine:3.17.4
+FROM alpine:3.17.6
 
 # Update and upgrade alpine
 # Install wget, PHP and its dependencies
