@@ -6,13 +6,13 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 02:44:25 by jfremond          #+#    #+#              #
-#    Updated: 2023/08/15 15:07:00 by jfremond         ###   ########.fr        #
+#    Updated: 2023/12/11 15:29:29 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
 
-sleep 5
+sleep 10
 
 set -x
 
