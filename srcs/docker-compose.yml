@@ -1,8 +1,8 @@
-version: "3.8"
+version: "3.3"
 
 services:
   nginx:
-    image: nginx:$TAG
+    image: nginx:${TAG}
     container_name: nginx
     build: "requirements/nginx"
     env_file: .env
@@ -13,11 +13,12 @@ services:
       - inception
     depends_on:
       - wordpress
+        # condition: service_healthy
     ports:
       - "443:443"
 
   wordpress:
-    image: wordpress:$TAG
+    image: wordpress:${TAG}
     container_name: wordpress
     build: "requirements/wordpress"
     env_file: .env
@@ -28,11 +29,12 @@ services:
       - inception
     depends_on:
       - mariadb
+        # condition: service_healthy
     expose:
       - "9000"
 
   mariadb:
-    image: mariadb:$TAG
+    image: mariadb:${TAG}
     container_name: mariadb
     build: "requirements/mariadb"
     env_file: .env
@@ -43,6 +45,12 @@ services:
       - inception
     expose:
       - "3306"
+    # healthcheck:
+    #   test ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
+    #   start_period: 30s
 
 
 volumes:

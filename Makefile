@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:09:35 by jfremond          #+#    #+#              #
-#    Updated: 2023/06/28 15:33:44 by jfremond         ###   ########.fr        #
+#    Updated: 2024/06/20 13:52:51 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME			=	inception
 #   COMMANDS   #
 ################
 
-DOCKER_CMD		=	docker compose
+DOCKER_CMD		=	docker-compose
 DOCKER_OPT		=	-f
 DOCKER_FILE		=	./srcs/docker-compose.yml
 DOCKER_COMPOSE	=	$(DOCKER_CMD) $(DOCKER_OPT) $(DOCKER_FILE)
